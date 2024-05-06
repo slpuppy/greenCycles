@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+
+struct Cycle {
+    
+    let startDate: Date
+    let currentDate: Date
+    let environment: Environment
+    let plants: [Plant]
+    
+    
+}
+

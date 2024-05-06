@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct Ventilation {
+    
+    enum VentilationType {
+        case exhaust, insideFan
+    }
+    
+    let power: Int
+    let flowRate: Float
+    let type: VentilationType
+}
+

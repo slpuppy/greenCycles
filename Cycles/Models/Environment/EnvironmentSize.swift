@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct EnvironmentSize {
+    let width1: Float
+    let width2: Float
+    let height: Float
+}

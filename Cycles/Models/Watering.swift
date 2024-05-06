@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Watering {
+    
+    let quantity: Float
+    let date: Date
+    let isFertirrigation: Bool
+    let fertilization: [Fertilization]?
+    
+}

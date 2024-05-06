@@ -8,24 +8,26 @@
 
 import SwiftUI
 
-struct SignInView: View {
+struct SignUpView: View {
     
 //    @EnvironmentObject var viewModel: AuthViewModel
+    @State var username = ""
     @State var email = ""
     @State var password = ""
     
     var body: some View {
         VStack{
             
-            Image("growin")
-                .resizable()
-                .scaledToFit()
-                .padding(.leading, 100)
-                .padding(.trailing, 100)
-                .padding(.top, 100)
-            
-            Spacer()
+            Text("Let's create your Cycles account")
+                .padding()
                 
+            TextField("Username", text: $email)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .padding()
+                .background(Color(.systemGray5))
+                .cornerRadius(15.0)
+                .padding(.bottom, 10)
             TextField("Email", text: $email)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
@@ -41,22 +43,12 @@ struct SignInView: View {
                 .cornerRadius(15.0)
                 .padding(.bottom, 4)
             
-            NavigationLink(destination: ResetPasswordView(), label:{
-                
-                Text("Forgot your password ? Click here")
-                    .font(.system(size: 14))
-               
-               .foregroundColor(Color("lightGreen"))
-                
-                
-            }).padding(.bottom, 20)
-            
             Spacer()
            
             Button(action: {
                 
-                guard !email.isEmpty, !password.isEmpty else {
-                    return
+                guard !email.isEmpty, !password.isEmpty, !username.isEmpty else {
+                    return // Add warning here
                 }
 //                viewModel.signIn(email: email, password: password)
             }, label: {
@@ -67,30 +59,26 @@ struct SignInView: View {
                         .foregroundColor(Color("mainGreen"))
                         .frame(maxHeight: 60)
                       
-                    Text("Sign In").font(.system(size: 18))
+                    Text("Sign Up").font(.system(size: 18))
                         .foregroundColor(.white)
-                }.padding([.leading, .trailing], 20)})
+                }})
             
-            Button(action: {
+            NavigationLink(destination: SignInView(), label: {
                 
-            }, label: {
-                Text("Don't have an account? Create one")
-                    .foregroundStyle(Color("lightGreen"))
-                    .font(.system(size: 14))
-                  
+                Text("Already have an account? Sign In").font(.system(size: 16))
+                    .underline()
+                    .foregroundColor(Color("mainGreen"))
+                    .padding(.top, 8)
             })
-            
-      
-            
-        }.padding(20)
-            .navigationBarHidden(true)
-        
+        }.padding()
+            .navigationTitle("Sign Up")
     }
 }
 
 
-struct SignView_Previews: PreviewProvider {
+struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        SignUpView()
     }
 }
+

@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Pot {
+    
+    enum PotMedium {
+        case living, coco, hydroponic, supersoil, clay
+    }
+    let size: Float
+    let soilMix: Dictionary<Int, String>?
+}

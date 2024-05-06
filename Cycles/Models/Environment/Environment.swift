@@ -17,17 +17,5 @@ struct Environment {
     let type: EnvironmentType
     let dimensions: EnvironmentSize
     let ilumination: [Ilumination]
-    let ventilation: [ExhaustFan]
+    let ventilation: [Ventilation]?
 }
-
-struct EnvironmentSize {
-    let width1: Double
-    let width2: Double
-    let height: Double
-}
-
-struct ExhaustFan {
-    let power: Int
-    let flowRate: Float
-}
-
