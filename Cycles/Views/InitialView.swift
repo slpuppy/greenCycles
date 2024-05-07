@@ -10,10 +10,16 @@ import SwiftUI
 struct InitialView: View {
     
     @EnvironmentObject var router: Router
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
-        
-            VStack {
+        VStack {
+            if viewModel.isSignedIn {
+                Text("SIGNED IN")
+                Button("Sign Out") {
+                    viewModel.signOut()
+                }
+            } else {
                 Image("growin").padding(.top, 100)
                 Text("Cycles growing journal")
                     .font(.system(size:36, weight: .bold, design: .monospaced))
@@ -50,9 +56,15 @@ struct InitialView: View {
                         .foregroundColor(Color("mainGreen"))
                         .padding(.top, 8)
                 })
+                
             }
-      }
+        }.onAppear {
+            viewModel.signedIn = viewModel.isSignedIn
+        }
+        
+    }
 }
+
 
 
 #Preview {

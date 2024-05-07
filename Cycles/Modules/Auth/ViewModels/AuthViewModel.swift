@@ -11,10 +11,15 @@ import FirebaseFirestore
 
 class AuthViewModel: ObservableObject {
     
-    let auth = AuthManager.shared.auth
+    let auth = Auth.auth()
     let db = FirestoreManager.shared.db
     
     @Published var signedIn = false
+    
+    var isSignedIn: Bool {
+        return auth.currentUser != nil
+        
+    }
     
     func signIn(email: String, password: String){
         auth.signIn(withEmail: email, password: password) { [weak self] result, error in

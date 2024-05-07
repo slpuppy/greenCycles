@@ -62,6 +62,7 @@ struct SignInView: View {
                     return
                 }
                 viewModel.signIn(email: email, password: password)
+                
             }, label: {
                 
                 ZStack{
@@ -85,6 +86,11 @@ struct SignInView: View {
             })
         }.padding()
             .navigationTitle("Sign In")
+            .onReceive(viewModel.$signedIn) { signedIn in
+                if signedIn {
+                    router.navigateToRoot()
+                }
+            }
     }
 }
 

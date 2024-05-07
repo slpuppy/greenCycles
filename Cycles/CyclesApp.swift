@@ -29,6 +29,7 @@ struct CyclesApp: App {
             NavigationStack(path: $router.navPath) {
                 let viewModel = AuthViewModel()
                 InitialView()
+                    .environmentObject(viewModel)
                     .navigationDestination(for: Router.Screen.self) { screen in
                         switch screen {
                         case .signIn:

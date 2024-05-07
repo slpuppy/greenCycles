@@ -42,8 +42,11 @@
 		751ECB222BE990C5007E78AD /* ResetPasswordFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB212BE990C5007E78AD /* ResetPasswordFeedbackView.swift */; };
 		751ECB242BEA63C1007E78AD /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB232BEA63C1007E78AD /* AuthViewModel.swift */; };
 		751ECB262BEA68C1007E78AD /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB252BEA68C1007E78AD /* FirestoreManager.swift */; };
-		751ECB282BEA6920007E78AD /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB272BEA6920007E78AD /* AuthManager.swift */; };
 		751ECB2F2BEA7F12007E78AD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB2E2BEA7F12007E78AD /* Router.swift */; };
+		751ECB312BEAA353007E78AD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB302BEAA353007E78AD /* MainView.swift */; };
+		751ECB332BEAA3FC007E78AD /* UserCyclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB322BEAA3FC007E78AD /* UserCyclesView.swift */; };
+		751ECB362BEAA46F007E78AD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB352BEAA46F007E78AD /* SettingsView.swift */; };
+		751ECB392BEAA4E5007E78AD /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB382BEAA4E5007E78AD /* CommunityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,8 +95,11 @@
 		751ECB212BE990C5007E78AD /* ResetPasswordFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordFeedbackView.swift; sourceTree = "<group>"; };
 		751ECB232BEA63C1007E78AD /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		751ECB252BEA68C1007E78AD /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
-		751ECB272BEA6920007E78AD /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		751ECB2E2BEA7F12007E78AD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		751ECB302BEAA353007E78AD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		751ECB322BEAA3FC007E78AD /* UserCyclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCyclesView.swift; sourceTree = "<group>"; };
+		751ECB352BEAA46F007E78AD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		751ECB382BEAA4E5007E78AD /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +279,7 @@
 		751ECB1E2BE98F65007E78AD /* UserCycles */ = {
 			isa = PBXGroup;
 			children = (
+				751ECB322BEAA3FC007E78AD /* UserCyclesView.swift */,
 			);
 			path = UserCycles;
 			sourceTree = "<group>";
@@ -281,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				751ECAB92BE955F4007E78AD /* InitialView.swift */,
+				751ECB302BEAA353007E78AD /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,8 +296,10 @@
 		751ECB202BE98FD6007E78AD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				751ECB1E2BE98F65007E78AD /* UserCycles */,
 				751ECB192BE98465007E78AD /* Auth */,
+				751ECB372BEAA4D2007E78AD /* Community */,
+				751ECB342BEAA452007E78AD /* Settings */,
+				751ECB1E2BE98F65007E78AD /* UserCycles */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -298,9 +308,24 @@
 			isa = PBXGroup;
 			children = (
 				751ECB252BEA68C1007E78AD /* FirestoreManager.swift */,
-				751ECB272BEA6920007E78AD /* AuthManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		751ECB342BEAA452007E78AD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				751ECB352BEAA46F007E78AD /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		751ECB372BEAA4D2007E78AD /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				751ECB382BEAA4E5007E78AD /* CommunityView.swift */,
+			);
+			path = Community;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,17 +475,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				751ECB182BE9842E007E78AD /* SecureInputView.swift in Sources */,
+				751ECB362BEAA46F007E78AD /* SettingsView.swift in Sources */,
+				751ECB312BEAA353007E78AD /* MainView.swift in Sources */,
 				751ECAF02BE9603B007E78AD /* EnvironmentSize.swift in Sources */,
 				751ECABA2BE955F4007E78AD /* InitialView.swift in Sources */,
 				751ECAEB2BE95C28007E78AD /* Plant.swift in Sources */,
 				751ECB222BE990C5007E78AD /* ResetPasswordFeedbackView.swift in Sources */,
 				751ECB162BE97C5A007E78AD /* ResetPasswordView.swift in Sources */,
 				751ECB0A2BE97915007E78AD /* Pot.swift in Sources */,
+				751ECB332BEAA3FC007E78AD /* UserCyclesView.swift in Sources */,
 				751ECB0C2BE9792A007E78AD /* Watering.swift in Sources */,
 				751ECB262BEA68C1007E78AD /* FirestoreManager.swift in Sources */,
-				751ECB282BEA6920007E78AD /* AuthManager.swift in Sources */,
 				751ECB2F2BEA7F12007E78AD /* Router.swift in Sources */,
 				751ECB242BEA63C1007E78AD /* AuthViewModel.swift in Sources */,
+				751ECB392BEAA4E5007E78AD /* CommunityView.swift in Sources */,
 				751ECAE72BE95A76007E78AD /* Environment.swift in Sources */,
 				751ECAB82BE955F4007E78AD /* CyclesApp.swift in Sources */,
 				751ECB142BE97BB5007E78AD /* SignInView.swift in Sources */,

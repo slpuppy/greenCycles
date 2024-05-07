@@ -75,6 +75,12 @@ struct SignUpView: View {
             })
         }.padding()
         .navigationTitle("Sign Up")
+        .onReceive(viewModel.$signedIn) { signedIn in
+            if signedIn {
+                router.navigateToRoot()
+            }
+        }
+
     }
 }
 
