@@ -8,9 +8,16 @@
 import Foundation
 
 
-struct Environment {
+class Environment: Codable, JSONRepresentable, ObservableObject, Identifiable  {
     
-    enum EnvironmentType {
+    internal init(type: EnvironmentType, dimensions: EnvironmentSize, ilumination: [Ilumination], ventilation: [Ventilation]?) {
+        self.type = type
+        self.dimensions = dimensions
+        self.ilumination = ilumination
+        self.ventilation = ventilation
+    }
+    
+    enum EnvironmentType: String, Codable {
         case outdoor, indoor
     }
     
@@ -18,4 +25,11 @@ struct Environment {
     let dimensions: EnvironmentSize
     let ilumination: [Ilumination]
     let ventilation: [Ventilation]?
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+        case dimensions
+        case ilumination
+        case ventilation
+    }
 }

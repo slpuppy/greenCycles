@@ -8,13 +8,20 @@
 import Foundation
 
 
-struct Cycle {
-    
+class Cycle: Codable, JSONRepresentable, ObservableObject, Identifiable  {
+   
     let startDate: Date
     let currentDate: Date
     let environment: Environment
-    let plants: [Plant]
+    let plants: [Plant] = []
     
+    
+    enum CodingKeys: String, CodingKey {
+        case startDate
+        case currentDate
+        case environment
+        case plants
+    }
     
 }
 

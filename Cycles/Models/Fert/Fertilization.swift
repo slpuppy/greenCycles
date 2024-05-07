@@ -7,10 +7,16 @@
 
 import Foundation
 
-struct Fertilization {
+struct Fertilization: Codable {
     
     let fertilizer: Fertilizer
     let quantity: Float
     let date: Date
+    
+    enum CodingKeys: String, CodingKey {
+        case fertilizer
+        case quantity
+        case date
+    }
     
 }

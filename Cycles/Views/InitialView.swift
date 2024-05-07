@@ -15,10 +15,7 @@ struct InitialView: View {
     var body: some View {
         VStack {
             if viewModel.isSignedIn {
-                Text("SIGNED IN")
-                Button("Sign Out") {
-                    viewModel.signOut()
-                }
+                MainView()
             } else {
                 Image("growin").padding(.top, 100)
                 Text("Cycles growing journal")

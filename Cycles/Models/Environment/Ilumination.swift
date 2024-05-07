@@ -7,20 +7,29 @@
 
 import Foundation
 
-import Foundation
-
-struct Ilumination {
+struct Ilumination: Codable {
     
-    enum IluminationType {
+    enum IluminationType: String, Codable {
         case CFL, COB_LED, HPS, LED, MH, QB_LED, SUN
     }
     
-    struct Light {
-        
+    struct Light: Codable {
         let type: IluminationType
-        let power: Int
-        var quantity: Int
+        let power: Int?
+        var quantity: Int?
+        
+        enum CodingKeys: String, CodingKey {
+            case type
+            case power
+            case quantity
+        }
     }
     
     let lights: [Light]
+    
+    enum CodingKeys: String, CodingKey {
+        case lights
+    }
+    
+ 
 }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Fertilizer {
+struct Fertilizer: Codable {
     
-    enum FertilizerType {
+    enum FertilizerType: String, Codable {
         case liquid, solid
     }
     

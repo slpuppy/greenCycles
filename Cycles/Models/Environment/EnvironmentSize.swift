@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EnvironmentSize {
+struct EnvironmentSize: Codable {
     let width1: Float
     let width2: Float
     let height: Float

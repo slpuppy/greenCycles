@@ -7,14 +7,20 @@
 
 import Foundation
 
-struct Ventilation {
+struct Ventilation: Codable {
     
-    enum VentilationType {
+    enum VentilationType: String, Codable {
         case exhaust, insideFan
     }
     
     let power: Int
     let flowRate: Float
     let type: VentilationType
+    
+    enum CodingKeys: String, CodingKey {
+        case power
+        case flowRate
+        case type
+    }
 }
 

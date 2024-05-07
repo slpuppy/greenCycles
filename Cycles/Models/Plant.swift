@@ -8,13 +8,13 @@
 import Foundation
 
 
-struct Plant {
+struct Plant: Codable {
     
-    enum BornType {
+    enum BornType: String, Codable {
         case seed, clone
     }
     
-    enum GeneticType {
+    enum GeneticType: String, Codable {
         case photoperiodic, automatic, unknown
     }
     
@@ -30,6 +30,21 @@ struct Plant {
     let harvestDate: Date?
     let wateringSchedule: [Watering]?
     let fertilizationSchedule: [Fertilization]?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case seedbank
+        case age
+        case geneticType
+        case bornType
+        case pot
+        case germinationDate
+        case vegStartDate
+        case flowerStartDate
+        case harvestDate
+        case wateringSchedule
+        case fertilizationSchedule
+    }
     
 }
 
