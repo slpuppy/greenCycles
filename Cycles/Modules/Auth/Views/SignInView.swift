@@ -10,7 +10,8 @@ import SwiftUI
 
 struct SignInView: View {
     
-//    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var router: Router
+    @EnvironmentObject var viewModel: AuthViewModel
     @State var email = ""
     @State var password = ""
     
@@ -41,7 +42,9 @@ struct SignInView: View {
                 .cornerRadius(15.0)
                 .padding(.bottom, 4)
             
-            NavigationLink(destination: ResetPasswordView(), label:{
+            Button(action: {
+                router.navigate(to: .resetPassword)
+            }, label:{
                 
                 Text("Forgot your password ? Click here")
                     .font(.system(size: 14))
@@ -58,7 +61,7 @@ struct SignInView: View {
                 guard !email.isEmpty, !password.isEmpty else {
                     return
                 }
-//                viewModel.signIn(email: email, password: password)
+                viewModel.signIn(email: email, password: password)
             }, label: {
                 
                 ZStack{
@@ -71,7 +74,9 @@ struct SignInView: View {
                         .foregroundColor(.white)
                 }})
             
-            NavigationLink(destination: SignInView(), label: {
+            Button(action: {
+                router.navigate(to: .signUp)
+            } , label: {
                 
                 Text("Don't have an account yet? Sign Up").font(.system(size: 16))
                     .underline()

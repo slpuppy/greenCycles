@@ -10,7 +10,8 @@ import SwiftUI
 
 struct SignUpView: View {
     
-//    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var router: Router
+    @EnvironmentObject var viewModel: AuthViewModel
     @State var username = ""
     @State var email = ""
     @State var password = ""
@@ -20,8 +21,8 @@ struct SignUpView: View {
             
             Text("Let's create your Cycles account")
                 .padding()
-                
-            TextField("Username", text: $email)
+            
+            TextField("Username", text: $username)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
                 .padding()
@@ -44,13 +45,13 @@ struct SignUpView: View {
                 .padding(.bottom, 4)
             
             Spacer()
-           
+            
             Button(action: {
                 
                 guard !email.isEmpty, !password.isEmpty, !username.isEmpty else {
                     return // Add warning here
                 }
-//                viewModel.signIn(email: email, password: password)
+                viewModel.signUp(email: email, password: password, username: username)
             }, label: {
                 
                 ZStack{
@@ -58,12 +59,14 @@ struct SignUpView: View {
                         .cornerRadius(15)
                         .foregroundColor(Color("mainGreen"))
                         .frame(maxHeight: 60)
-                      
+                    
                     Text("Sign Up").font(.system(size: 18))
                         .foregroundColor(.white)
                 }})
             
-            NavigationLink(destination: SignInView(), label: {
+            Button(action:{
+                router.navigate(to: .signIn)
+            }, label: {
                 
                 Text("Already have an account? Sign In").font(.system(size: 16))
                     .underline()
@@ -71,7 +74,7 @@ struct SignUpView: View {
                     .padding(.top, 8)
             })
         }.padding()
-            .navigationTitle("Sign Up")
+        .navigationTitle("Sign Up")
     }
 }
 

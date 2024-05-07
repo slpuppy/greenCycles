@@ -9,7 +9,7 @@ import SwiftUI
 
 import SwiftUI
 
-struct ResetFeedbackView: View {
+struct ResetPasswordFeedbackView: View {
     var body: some View {
         
         VStack{
@@ -23,16 +23,15 @@ struct ResetFeedbackView: View {
             .padding(.top, 20)
             
             Spacer()
-            
         
-        Text("An email has been sent to you")
+            Text("An email has been sent to you")
             .font(.system(size: 22,
                           weight: .bold,
                           design: .default))
             .foregroundColor(Color("mainGreen"))
             .padding()
         
-        NavigationLink(destination: SignInView(), label: {
+            NavigationLink(value: "signIn", label: {
             
             ZStack{
                 Rectangle()
@@ -47,13 +46,12 @@ struct ResetFeedbackView: View {
         
         }.navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Email Sent")
-            
         }
     }
 
 
 struct ResetFeedbackView_Previews: PreviewProvider {
     static var previews: some View {
-        ResetFeedbackView()
+        ResetPasswordFeedbackView()
     }
 }

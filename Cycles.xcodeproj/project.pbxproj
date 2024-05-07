@@ -40,6 +40,10 @@
 		751ECB182BE9842E007E78AD /* SecureInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB172BE9842E007E78AD /* SecureInputView.swift */; };
 		751ECB1D2BE98BBB007E78AD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB1C2BE98BBB007E78AD /* SignUpView.swift */; };
 		751ECB222BE990C5007E78AD /* ResetPasswordFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB212BE990C5007E78AD /* ResetPasswordFeedbackView.swift */; };
+		751ECB242BEA63C1007E78AD /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB232BEA63C1007E78AD /* AuthViewModel.swift */; };
+		751ECB262BEA68C1007E78AD /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB252BEA68C1007E78AD /* FirestoreManager.swift */; };
+		751ECB282BEA6920007E78AD /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB272BEA6920007E78AD /* AuthManager.swift */; };
+		751ECB2F2BEA7F12007E78AD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751ECB2E2BEA7F12007E78AD /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,10 @@
 		751ECB172BE9842E007E78AD /* SecureInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInputView.swift; sourceTree = "<group>"; };
 		751ECB1C2BE98BBB007E78AD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		751ECB212BE990C5007E78AD /* ResetPasswordFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordFeedbackView.swift; sourceTree = "<group>"; };
+		751ECB232BEA63C1007E78AD /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		751ECB252BEA68C1007E78AD /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		751ECB272BEA6920007E78AD /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		751ECB2E2BEA7F12007E78AD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +157,9 @@
 			children = (
 				751ECAF12BE97144007E78AD /* GoogleService-Info.plist */,
 				751ECAB72BE955F4007E78AD /* CyclesApp.swift */,
+				751ECB2E2BEA7F12007E78AD /* Router.swift */,
 				751ECB1F2BE98FCA007E78AD /* Views */,
+				751ECB292BEA69B9007E78AD /* Managers */,
 				751ECAE12BE955FC007E78AD /* Models */,
 				751ECB202BE98FD6007E78AD /* Modules */,
 				751ECABB2BE955F5007E78AD /* Assets.xcassets */,
@@ -199,6 +209,10 @@
 		751ECAE22BE95605007E78AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				751ECB132BE97BB5007E78AD /* SignInView.swift */,
+				751ECB172BE9842E007E78AD /* SecureInputView.swift */,
+				751ECB152BE97C5A007E78AD /* ResetPasswordView.swift */,
+				751ECB212BE990C5007E78AD /* ResetPasswordFeedbackView.swift */,
 				751ECB1C2BE98BBB007E78AD /* SignUpView.swift */,
 			);
 			path = Views;
@@ -207,6 +221,7 @@
 		751ECAE32BE95610007E78AD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				751ECB232BEA63C1007E78AD /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -244,10 +259,6 @@
 				751ECB1A2BE984BC007E78AD /* Models */,
 				751ECAE32BE95610007E78AD /* ViewModels */,
 				751ECAE22BE95605007E78AD /* Views */,
-				751ECB132BE97BB5007E78AD /* SignInView.swift */,
-				751ECB172BE9842E007E78AD /* SecureInputView.swift */,
-				751ECB152BE97C5A007E78AD /* ResetPasswordView.swift */,
-				751ECB212BE990C5007E78AD /* ResetPasswordFeedbackView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -281,6 +292,15 @@
 				751ECB192BE98465007E78AD /* Auth */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		751ECB292BEA69B9007E78AD /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				751ECB252BEA68C1007E78AD /* FirestoreManager.swift */,
+				751ECB272BEA6920007E78AD /* AuthManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,6 +457,10 @@
 				751ECB162BE97C5A007E78AD /* ResetPasswordView.swift in Sources */,
 				751ECB0A2BE97915007E78AD /* Pot.swift in Sources */,
 				751ECB0C2BE9792A007E78AD /* Watering.swift in Sources */,
+				751ECB262BEA68C1007E78AD /* FirestoreManager.swift in Sources */,
+				751ECB282BEA6920007E78AD /* AuthManager.swift in Sources */,
+				751ECB2F2BEA7F12007E78AD /* Router.swift in Sources */,
+				751ECB242BEA63C1007E78AD /* AuthViewModel.swift in Sources */,
 				751ECAE72BE95A76007E78AD /* Environment.swift in Sources */,
 				751ECAB82BE955F4007E78AD /* CyclesApp.swift in Sources */,
 				751ECB142BE97BB5007E78AD /* SignInView.swift in Sources */,

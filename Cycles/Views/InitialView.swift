@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct InitialView: View {
+    
+    @EnvironmentObject var router: Router
+    
     var body: some View {
-        NavigationView {
+        
             VStack {
                 Image("growin").padding(.top, 100)
                 Text("Cycles growing journal")
@@ -26,8 +29,9 @@ struct InitialView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: SignInView(), label: {
-                    
+                Button(action: {
+                    router.navigate(to: .signIn)
+                }, label: {
                     ZStack{
                         Rectangle()
                             .cornerRadius(15)
@@ -38,16 +42,16 @@ struct InitialView: View {
                             .foregroundColor(.white)
                     }.padding([.leading, .trailing], 20)})
                 
-                NavigationLink(destination: SignUpView(), label: {
-                    
+                Button(action: {
+                    router.navigate(to: .signUp)
+                }, label: {
                     Text("Don't have an account yet? Sign Up").font(.system(size: 16))
                         .underline()
                         .foregroundColor(Color("mainGreen"))
                         .padding(.top, 8)
                 })
             }
-        }.accentColor(Color("mainGreen"))
-    }
+      }
 }
 
 
