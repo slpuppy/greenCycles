@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct UserCyclesView: View {
+    
+    @ObservedObject var viewModel = UserCyclesViewModel()
+   
     var body: some View {
-        Text("No cycles grown")
+        VStack{
+            if viewModel.cycles.count > 0 {
+                ForEach(viewModel.cycles) { cycle in
+                    Text(cycle.name)
+                }
+            } else {
+                Text("No cycles grown")
+            }
+            Button("Create Cycle") {
+                viewModel.createNewCycle()
+            }
+            Button("Sign Out") {
+              //  viewModel.signOut()
+            }
+        }.onAppear() {
+            self.viewModel.fetchUserCycles()
+        }
+        
     }
 }
 

@@ -16,6 +16,7 @@ enum Tabs: String {
 struct MainView: View {
     
     @State var selectedTab: Tabs = .cycles
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         TabView(selection: $selectedTab) {

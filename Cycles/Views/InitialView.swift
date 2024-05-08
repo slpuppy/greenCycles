@@ -16,6 +16,7 @@ struct InitialView: View {
         VStack {
             if viewModel.isSignedIn {
                 MainView()
+                    .environmentObject(viewModel)
             } else {
                 Image("growin").padding(.top, 100)
                 Text("Cycles growing journal")

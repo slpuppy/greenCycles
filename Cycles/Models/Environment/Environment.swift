@@ -10,7 +10,7 @@ import Foundation
 
 class Environment: Codable, JSONRepresentable, ObservableObject, Identifiable  {
     
-    internal init(type: EnvironmentType, dimensions: EnvironmentSize, ilumination: [Ilumination], ventilation: [Ventilation]?) {
+    internal init(type: EnvironmentType, dimensions: EnvironmentSize, ilumination: Ilumination, ventilation: [Ventilation]?) {
         self.type = type
         self.dimensions = dimensions
         self.ilumination = ilumination
@@ -23,7 +23,7 @@ class Environment: Codable, JSONRepresentable, ObservableObject, Identifiable  {
     
     let type: EnvironmentType
     let dimensions: EnvironmentSize
-    let ilumination: [Ilumination]
+    let ilumination: Ilumination
     let ventilation: [Ventilation]?
     
     enum CodingKeys: String, CodingKey {
