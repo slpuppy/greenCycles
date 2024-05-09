@@ -32,28 +32,16 @@ class DBManager: DBManagerProtocol {
             guard let id = AuthManager.shared.auth.currentUser?.uid else {
                 throw NSError(domain: "", code: 401, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])
             }
-            
             let userRef = db.collection("userInfo").document(id)
             let docRef = userRef.collection("cycles").document()
             let cycleId = docRef.documentID
-            cycle.updateID(id: cycleId)
-            
-            let encoder = JSONEncoder()
-            encoder.dateEncodingStrategy = .iso8601 // Set the date encoding strategy to .iso8601
-            
-            let cycleData = try encoder.encode(cycle)
-            guard let cycleDict = try JSONSerialization.jsonObject(with: cycleData, options: []) as? [String: Any] else {
-                throw NSError(domain: "", code: 500, userInfo: [NSLocalizedDescriptionKey: "Failed to encode cycle"])
-            }
-            
-            try await userRef.collection("cycles").document(cycleId).setData(cycleDict)
+            try userRef.collection("cycles").document(cycleId).setData(from: cycle)
             print("Cycle written to database successfully")
         } catch {
             print("Failed to write cycle to database:", error.localizedDescription)
             throw error
         }
     }
-
     
     func saveUser(email: String, username: String, id: String) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in

@@ -55,7 +55,7 @@ class UserCyclesViewModel: ObservableObject {
                     self.fetchUserCycles()
                 }
             } catch {
-                // Handle error
+               print("couldn't create cycle")
             }
         }
     }
