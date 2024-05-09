@@ -35,15 +35,10 @@ struct ResetPasswordView: View {
                     .padding(.bottom, 10)
                 
                 Button(action: {
-                    viewModel.sendPasswordReset(withEmail: passwordResetEmail) { error in
-                        if error != nil {
-                            print("error sending email")
-                        } else {
-                            print ("email sent")
-                            showingAlert = true
-                        }
+                    Task {
+                        await viewModel.sendPasswordReset(withEmail: passwordResetEmail)
                     }
-                }, label: {
+                    }, label: {
                     ZStack {
                         Rectangle()
                             .cornerRadius(15)

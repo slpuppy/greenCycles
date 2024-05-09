@@ -13,11 +13,6 @@ struct InitialView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
-        VStack {
-            if viewModel.isSignedIn {
-                MainView()
-                    .environmentObject(viewModel)
-            } else {
                 Image("growin").padding(.top, 100)
                 Text("Cycles growing journal")
                     .font(.system(size:36, weight: .bold, design: .monospaced))
@@ -56,14 +51,8 @@ struct InitialView: View {
                 })
                 
             }
-        }.onAppear {
-            viewModel.signedIn = viewModel.isSignedIn
         }
         
-    }
-}
-
-
 
 #Preview {
     InitialView()

@@ -51,7 +51,10 @@ struct SignUpView: View {
                 guard !email.isEmpty, !password.isEmpty, !username.isEmpty else {
                     return // Add warning here
                 }
-                viewModel.signUp(email: email, password: password, username: username)
+                Task {
+                   await viewModel.signUp(email: email, password: password, username: username)
+                }
+                
             }, label: {
                 
                 ZStack{

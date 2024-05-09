@@ -17,7 +17,6 @@ struct SignInView: View {
     
     var body: some View {
         VStack{
-            
             Image("growin")
                 .resizable()
                 .scaledToFit()
@@ -57,12 +56,12 @@ struct SignInView: View {
             Spacer()
            
             Button(action: {
-                
                 guard !email.isEmpty, !password.isEmpty else {
                     return
                 }
-                viewModel.signIn(email: email, password: password)
-                
+                Task {
+                    await viewModel.signIn(email: email, password: password)
+                }
             }, label: {
                 
                 ZStack{

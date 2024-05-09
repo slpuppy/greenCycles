@@ -11,77 +11,73 @@ import FirebaseFirestore
 
 class AuthViewModel: ObservableObject {
     
-    let auth = Auth.auth()
-    let db = FirestoreManager.shared.db
+    var auth: AuthProtocol?
+    var dbManager: DBManagerProtocol?
     
     @Published var signedIn = false
     
-    var isSignedIn: Bool {
-        return auth.currentUser != nil
-        
+    func setup(auth: AuthProtocol = AuthManager.shared, db: DBManagerProtocol = DBManager.shared){
+        self.auth = auth
+        self.dbManager = db
+        signedIn = auth.isSignedIn
     }
     
-    func signIn(email: String, password: String){
-        auth.signIn(withEmail: email, password: password) { [weak self] result, error in
-            guard result != nil, error == nil else {
-                return
-            }
+    func signIn(email: String, password: String) async {
+        do {
+            try await auth?.signIn(email: email, password: password)
             DispatchQueue.main.async {
-                self?.signedIn = true
+                self.signedIn = true
             }
+        } catch {
+            // Handle error, e.g., show an alert to the user
+            print("Failed to sign in:", error)
         }
     }
     
-    func signUp(email: String, password: String, username: String){
-        
-        auth.createUser(withEmail: email, password: password) { [weak self] result, error in
-            guard let result = result, error == nil else {
-                print("Error signing up:", error?.localizedDescription ?? "Unknown error")
-                return }
+    func signUp(email: String, password: String, username: String) async {
+        do {
+            try await auth?.signUp(email: email, password: password, username: username)
+            DispatchQueue.main.async {
+                self.signedIn = true
+            }
             
-            DispatchQueue.main.async {
-                print("Success")
-                self?.signedIn = true
-                
-                let uid = result.user.uid
-                
-                self?.db.collection("userInfo").document(uid).setData( ["email": email, "uid": uid, "username" : username]) { (error) in
-                    if let error = error {
-                        print("Error saving user data:", error.localizedDescription)
-                        return
-                    }
-                }
+            if let id = AuthManager.shared.auth.currentUser?.uid {
+                try await DBManager.shared.saveUser(email: email, username: username, id: id)
             }
-        }
-    }
-    
-    func sendPasswordReset(withEmail email: String, _ callback: ((Error?) -> ())? = nil){
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
-            callback?(error)
+        } catch {
+            // Handle error, e.g., show an alert to the user
+            print("Failed to sign up:", error)
         }
     }
     
     
-    func deleteAccount() {
-        
-        let user = auth.currentUser
-        user?.delete { error in
-          if let error = error {
-            // An error happened.
-              print(error)
-        } else {
-              self.signOut()
-              print("sucessfull deleted")
-          }
+    func sendPasswordReset(withEmail email: String) async {
+        do {
+            try await auth?.sendPasswordReset(withEmail: email)
+            // Password reset email sent successfully
+        } catch {
+            // Handle error, e.g., show an alert to the user
+            print("Failed to send password reset:", error)
         }
-        
     }
- 
+    
+    
+    func deleteAccount() async {
+        do {
+            try await auth?.deleteAccount()
+            // Account deleted successfully
+        } catch {
+            // Handle error, e.g., show an alert to the user
+            print("Failed to delete account:", error)
+        }
+    }
+    
+    
     func signOut() {
-        try? auth.signOut()
+        auth?.signOut()
         self.signedIn = false
-        
     }
+    
 }
 
 

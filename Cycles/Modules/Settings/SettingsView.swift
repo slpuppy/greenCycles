@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
-        Text("Settings")
+        Button("Sign Out") {
+            viewModel.signOut()
+        }
     }
 }
 
